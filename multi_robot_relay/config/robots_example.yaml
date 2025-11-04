@@ -1,0 +1,19 @@
+# 示例: 两台机器人配置
+
+# 机器人1配置
+robot1:
+  robot_name: "robot1"
+  map_origin_offset: [0.0, 0.0, 0.0]  # 机器人1作为参考原点
+  enable_coordinate_transform: false
+
+# 机器人2配置  
+robot2:
+  robot_name: "robot2"
+  map_origin_offset: [1.5, 0.5, 0.0]  # 机器人2的地图原点相对机器人1的偏移
+  enable_coordinate_transform: true
+
+# 机器人3配置
+robot3:
+  robot_name: "robot3"
+  map_origin_offset: [-1.0, 2.0, 1.57]  # x偏移-1m, y偏移2m, 旋转90度
+  enable_coordinate_transform: true

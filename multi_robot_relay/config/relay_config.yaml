@@ -1,0 +1,100 @@
+# 多机器人中转站配置文件
+# Multi-Robot Relay Configuration File
+
+/**:
+  ros__parameters:
+    # 机器人名称 (留空则从启动参数获取)
+    robot_name: ""
+    
+    # 更新频率 (Hz)
+    update_rate: 20.0
+    
+    # 心跳超时时间 (秒)
+    heartbeat_timeout: 5.0
+    
+    # 是否启用坐标转换
+    enable_coordinate_transform: false
+    
+    # 地图原点偏移
+    map_origin_offset_x: 0.0
+    map_origin_offset_y: 0.0
+    map_origin_offset_yaw: 0.0
+    
+    # ==================== 上行话题配置 (本地 → 全局) ====================
+    # 本地话题列表
+    uplink_local_topics: 
+      - "/odom"
+      - "/scan"
+      - "/amcl_pose"
+      - "/particle_cloud"
+      - "/controller/cmd_vel"
+    
+    # 对应的全局话题模板 (顺序需对应)
+    uplink_global_topics:
+      - "/{robot_name}/odom"
+      - "/{robot_name}/scan"
+      - "/{robot_name}/amcl_pose"
+      - "/{robot_name}/particle_cloud"
+      - "/{robot_name}/cmd_vel_status"
+    
+    # 对应的消息类型 (顺序需对应)
+    uplink_msg_types:
+      - "nav_msgs/msg/Odometry"
+      - "sensor_msgs/msg/LaserScan"
+      - "geometry_msgs/msg/PoseWithCovarianceStamped"
+      - "nav2_msgs/msg/ParticleCloud"
+      - "geometry_msgs/msg/Twist"
+    
+    # QoS深度
+    uplink_qos_depth: 10
+    
+    # ==================== 下行话题配置 (全局 → 本地) ====================
+    # 全局话题列表
+    downlink_global_topics:
+      - "/{robot_name}/goal_pose"
+      - "/{robot_name}/initialpose"
+      - "/{robot_name}/cmd_vel_override"
+    
+    # 对应的本地话题 (顺序需对应)
+    downlink_local_topics:
+      - "/goal_pose"
+      - "/initialpose"
+      - "/controller/cmd_vel"
+    
+    # 对应的消息类型 (顺序需对应)
+    downlink_msg_types:
+      - "geometry_msgs/msg/PoseStamped"
+      - "geometry_msgs/msg/PoseWithCovarianceStamped"
+      - "geometry_msgs/msg/Twist"
+    
+    # QoS深度
+    downlink_qos_depth: 10
+    
+    # ==================== TF变换配置 ====================
+    tf_enabled: true
+    tf_publish_rate: 50.0
+    
+    # 需要中转的TF框架
+    tf_frames:
+      - "map"
+      - "odom"
+      - "base_footprint"
+      - "base_link"
+      - "laser"
+      - "camera_link"
+    
+    # 是否保持原始框架
+    tf_keep_original: true
+    
+    # ==================== 坐标转换配置 ====================
+    coord_transform_enabled: false
+    coord_transform_mode: "offset"
+    coord_map_offset_x: 0.0
+    coord_map_offset_y: 0.0
+    coord_map_offset_yaw: 0.0
+    
+    # ==================== 注册中心配置 ====================
+    registry_update_rate: 1.0
+    registry_robot_timeout: 10.0
+    registry_auto_broadcast: true
+    registry_list_topic: "/multi_robot/robot_list"

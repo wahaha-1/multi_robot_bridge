@@ -1,5 +1,3 @@
-
-```markdown
 #  multi_robot_relay
 
 ## 📋 功能概述 | Overview
@@ -63,7 +61,7 @@ multi_robot_relay/
 ├── coordinate_transformer_node.py # 坐标转换节点 | Coordinate transformer
 └── robot_registry_node.py      # 机器人注册节点 | Robot registry node
 
-````
+```
 
 ---
 
@@ -74,7 +72,7 @@ multi_robot_relay/
 cd ~/ros2_ws
 colcon build --packages-select multi_robot_relay
 source install/setup.bash
-````
+```
 
 ### 🤖 2. 单个机器人使用 | Single Robot Usage
 

@@ -47,7 +47,6 @@ This package acts as a **Relay Hub** to resolve topic conflicts when multiple ro
 
 ## 🏗️ 包结构 | Package Structure
 
-```
 
 multi_robot_relay/
 ├── config/
@@ -63,11 +62,6 @@ multi_robot_relay/
 ├── coordinate_transformer_node.py # 坐标转换节点 | Coordinate transformer
 └── robot_registry_node.py      # 机器人注册节点 | Robot registry node
 
-````
-
----
-
-## 🚀 快速开始 | Quick Start
 
 ### 🧱 1. 编译包 | Build the Package
 ```bash
@@ -214,77 +208,6 @@ ros2 run multi_robot_relay tf_relay --ros-args -p robot_name:=robot1 -p publish_
 ```
 
 ---
-
-## 🎯 使用场景 | Use Cases
-
-### 场景1：多机器人仓储物流 | Scenario 1: Multi-Robot Warehouse Logistics
-
-```bash
-ros2 launch multi_robot_relay robot_relay.launch.py robot_name:=robot1
-ros2 launch navigation navigation.launch.py
-```
-
-### 场景2：协同巡检 | Scenario 2: Cooperative Inspection
-
-```bash
-ros2 topic echo /robot1/amcl_pose &
-ros2 topic echo /robot2/amcl_pose &
-python3 patrol_scheduler.py
-```
-
----
-
-## 🐛 故障排查 | Troubleshooting
-
-### 问题1：话题没有中转 | Issue 1: Topic Not Relayed
-
-检查 | Check:
-
-```bash
-ros2 node list
-ros2 topic list
-```
-
-解决 | Fix:
-
-* 检查机器人名称 | Check robot name
-* 检查配置路径 | Check config path
-* 查看日志 | Check logs
-
-### 问题2：坐标系不统一 | Issue 2: Coordinate Misalignment
-
-```bash
-ros2 run tf2_ros tf2_echo map robot1/map
-```
-
-解决 | Fix:
-
-* 确认偏移配置 | Verify offset config
-* 启用坐标转换节点 | Enable transformer
-* 校准相对位置 | Calibrate positions
-
-### 问题3：TF变换错误 | Issue 3: TF Transformation Error
-
-```bash
-ros2 run tf2_tools view_frames.py
-```
-
-解决 | Fix:
-
-* 检查 TF 中转节点 | Check TF relay node
-* 检查配置 | Verify configuration
-* 调整频率 | Adjust frequency
-
----
-
-## 📝 开发说明 | Developer Notes
-
-### 添加新的中转话题 | Add New Relay Topics
-
-1. 编辑 `config/relay_config.yaml`
-2. 添加到 `uplink_topics` 或 `downlink_topics`
-3. 重启中转节点
-
 ### 自定义坐标转换 | Customize Coordinate Transform
 
 ```python

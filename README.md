@@ -1,8 +1,6 @@
 
 #  multi_robot_relay
 
-## 📋 功能概述 | Overview
-
 这个包作为**中转站（Relay Hub）**，解决多个机器人运行相同 ROS2 项目代码时的话题冲突问题。  
 This package acts as a **Relay Hub** to resolve topic conflicts when multiple robots run the same ROS2 project code.
 

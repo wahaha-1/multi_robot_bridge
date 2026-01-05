@@ -44,20 +44,22 @@ This package acts as a **Relay Hub** to resolve topic conflicts when multiple ro
 
 ## 🏗️ 包结构 | Package Structure
 
-
+```text
 multi_robot_relay/
 ├── config/
-│   ├── relay_config.yaml          # 中转站配置 | Relay configuration
-│   └── robots_example.yaml        # 机器人配置示例 | Example robot config
+│   ├── relay_config.yaml               # 中转站配置 | Relay configuration
+│   └── robots_example.yaml             # 机器人配置示例 | Example robot config
 ├── launch/
-│   ├── robot_relay.launch.py      # 单机器人中转站启动 | Single robot relay
-│   ├── central_registry.launch.py # 中央注册服务器启动 | Central registry
-│   └── multi_robot_system.launch.py # 多机器人系统启动 | Multi-robot system
+│   ├── robot_relay.launch.py            # 单机器人中转站启动 | Single robot relay
+│   ├── central_registry.launch.py       # 中央注册服务器启动 | Central registry
+│   └── multi_robot_system.launch.py     # 多机器人系统启动 | Multi-robot system
 └── multi_robot_relay/
-├── topic_relay_node.py         # 话题中转节点 | Topic relay node
-├── tf_relay_node.py            # TF中转节点 | TF relay node
-├── coordinate_transformer_node.py # 坐标转换节点 | Coordinate transformer
-└── robot_registry_node.py      # 机器人注册节点 | Robot registry node
+    ├── topic_relay_node.py              # 话题中转节点 | Topic relay node
+    ├── tf_relay_node.py                 # TF中转节点 | TF relay node
+    ├── coordinate_transformer_node.py   # 坐标转换节点 | Coordinate transformer
+    └── robot_registry_node.py           # 机器人注册节点 | Robot registry node
+```
+
 
 
 ### 🧱 1. 编译包 | Build the Package
